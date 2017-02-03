@@ -1,0 +1,17 @@
+{
+  "name": "app-engine-demo-frontend",
+  "authors": [
+    "Matthias Brosolo <matthias.brosolo@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
