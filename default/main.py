@@ -14,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+# from google.appengine.api import users
 import webapp2
 
 
@@ -22,6 +23,15 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write('Hello world!')
 
 
-app = webapp2.WSGIApplication([
+class HelloHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.write('Frank!')
+
+
+APPLICATION_HANDLERS = [
+    # webapp2.Route("/hello", HelloHandler),
+    ('/hello', HelloHandler),
     ('/', MainHandler)
-], debug=True)
+]
+
+app = webapp2.WSGIApplication(APPLICATION_HANDLERS, debug=True)
