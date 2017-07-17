@@ -10,6 +10,12 @@
 
         <div class="main">
             <h2>Hello {{vm.name}}!</h2>
+            <br />
+            <h3>Todos</h3>
+            <div ng-repeat="todo in vm.todos">
+                <h4>{{todo.title}}</h4>
+                <p>{{todo.content}}</p>
+            </div>
         </div>
         <!-- vendors -->
         <script src="bower_components/angular/angular.js"></script>

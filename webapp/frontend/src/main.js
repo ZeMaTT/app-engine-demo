@@ -22,6 +22,12 @@
 
         function activate() {
             log.info('MainController');
+            vm.todos = [
+                {title: "todo1", content: "content1"},
+                {title: "todo2", content: "content2"},
+                {title: "todo3", content: "content3"},
+                {title: "todo4", content: "content4"}
+            ];
         }
     }
 
