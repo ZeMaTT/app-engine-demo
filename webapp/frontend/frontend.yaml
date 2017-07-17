@@ -1,0 +1,16 @@
+service: frontend
+runtime: python27
+threadsafe: true
+api_version: 1
+instance_class: F1
+
+handlers:
+- url: /(.+)
+  secure: always
+  static_files: src/\1
+  upload: src/(.+)
+
+- url: /
+  secure: always
+  static_files: src/index.html
+  upload: src/index.html
