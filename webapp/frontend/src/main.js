@@ -4,7 +4,9 @@
 
 (function (angular) {
     "use strict";
-    angular.module('app')
+
+    angular
+        .module('app')
         .controller('MainController', MainController);
 
     MainController.$inject = ['$log'];
@@ -12,13 +14,14 @@
     function MainController(log) {
         var vm = this;
 
+        vm.name = "D2SI";
 
         activate();
 
         ////////////////////////
 
         function activate() {
-            log.debug('MainController');
+            log.info('MainController');
         }
     }
 
