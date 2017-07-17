@@ -10,10 +10,10 @@
         .config(configure)
     ;
 
-    configure.$inject = ['$logProvider'];
+    configure.$inject = ['$logProvider', 'Environment'];
 
-    function configure($logProvider) {
-        $logProvider.debugEnabled(true);
+    function configure($logProvider, Environment) {
+        $logProvider.debugEnabled(Environment.debug);
     }
 
 })(angular);
