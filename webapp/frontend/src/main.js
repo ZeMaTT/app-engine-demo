@@ -21,7 +21,7 @@
         ////////////////////////
 
         function activate() {
-            log.info('MainController');
+            log.debug('MainController');
             vm.todos = [
                 {title: "todo1", content: "content1"},
                 {title: "todo2", content: "content2"},
