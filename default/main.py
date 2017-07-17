@@ -20,17 +20,17 @@ import webapp2
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        self.response.write('Hello D2SI!')
 
 
 class HelloHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Frank!')
+        self.response.write('Hello Frank!')
 
 
 APPLICATION_HANDLERS = [
     # webapp2.Route("/hello", HelloHandler),
-    ('/hello', HelloHandler),
+    ('/api/hello', HelloHandler),
     ('/', MainHandler)
 ]
 
