@@ -23,11 +23,16 @@ import webapp2
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
-
-class BaseHandler(webapp2.RequestHandler):
-    def dispatch(self):
-        # inject headers here (self.request.headers)
-        super(BaseHandler, self).dispatch()
+TODOS_LIST = [{
+    'id': 1,
+    'content': 'todo laundry'
+}, {
+    'id': 2,
+    'content': 'todo lunch'
+}, {
+    'id': 3,
+    'content': 'todo taxes'
+}]
 
 
 class MainHandler(webapp2.RequestHandler):
@@ -36,34 +41,52 @@ class MainHandler(webapp2.RequestHandler):
 
 
 class TodoHandler(webapp2.RequestHandler):
-    payload = [{
-        'id': 1,
-        'content': 'todo laundry'
-    }, {
-        'id': 2,
-        'content': 'todo lunch'
-    }, {
-        'id': 3,
-        'content': 'todo taxes'
-    }]
-
     def get(self):
         self.response.headers['Content-Type'] = 'application/json'
         self.response.set_status(200)
-        self.response.write(json.dumps(self.payload))
+        self.response.write(json.dumps(TODOS_LIST))
 
     def post(self):
         payload = self.request.body
         data = json.loads(payload)
         logger.debug(data)
-        self.payload.append(data)
+        TODOS_LIST.append(data)
         self.response.set_status(201)
         self.response.write(json.dumps(data))
+
+
+class TodoDetailsHandler(webapp2.RequestHandler):
+    def delete(self, todo_id):
+        self.response.set_status(200)
+        self.response.write('Not Implemented Yet')
+
+    def get(self, todo_id):
+        r = None
+        todo_id = int(todo_id)
+        print type(todo_id), TODOS_LIST
+        for todo in TODOS_LIST:
+            if todo['id'] == todo_id:
+                r = todo
+        if r is None:
+            self.response.set_status(404)
+            self.response.write(json.dumps({'msg': 'Todo not found'}))
+        else:
+            self.response.set_status(200)
+            self.response.write(json.dumps(r))
+
+    def patch(self, todo_id):
+        self.response.set_status(200)
+        self.response.write('Not Implemented Yet')
+
+    def put(self, todo_id):
+        self.response.set_status(200)
+        self.response.write('Not Implemented Yet')
 
 
 APPLICATION_HANDLERS = [
     (r'/api/', MainHandler),
     (r'/api/todos/', TodoHandler),
+    webapp2.Route(r'/api/todos/<todo_id:\d+>/', handler=TodoDetailsHandler, name='todo_id'),
 ]
 
 app = webapp2.WSGIApplication(APPLICATION_HANDLERS, debug=True)
