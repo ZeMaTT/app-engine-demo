@@ -1,29 +1,14 @@
 <!DOCTYPE html>
-<html data-ng-app="app">
+<html>
     <head>
         <meta charset="UTF-8">
         <title>App Engine demo</title>
 
         <link rel="stylesheet" type="text/css" href="app.css">
     </head>
-    <body ng-controller="MainController as vm">
-
+    <body>
         <div class="main">
-            <h2>Hello {{vm.name}}!</h2>
-            <br />
-            <h3>Todos</h3>
-            <div ng-repeat="todo in vm.todos">
-                <h4>{{todo.title}}</h4>
-                <p>{{todo.content}}</p>
-            </div>
+            <h2>Hello world!</h2>
         </div>
-        <!-- vendors -->
-        <script src="bower_components/angular/angular.js"></script>
-        <!-- /vendors -->
-
-        <script src="app.module.js"></script>
-        <script src="constants.js"></script>
-        <script src="config.js"></script>
-        <script src="main.js"></script>
     </body>
 </html>
